@@ -1,0 +1,61 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Tasks and Rules}
+\label{chap:task}
+
+\section{General Rules}
+
+The aim of this benchmark is to evaluate robot intelligence for manipulation in a human friendly environment without an aid of an user.
+Therefore, a robot should execute each benchmark task autonomously by itself,
+including avoiding dangerous behavior for human and object and recovering in emergency status.
+More detailed description of individual prerequisite \& rules are as follow:
+\begin{itemize}
+%------------------
+\item
+\textbf{Fully automated cycle:}
+Once a robot is activated (by person) to start a single test of a task, 
+no other external input is allowed until the robot determined that it has completed the test and must return to its end status.
+(i.e., need to implement \textit{stop} fucntion which can decide if a single test is finished or not.) 
+%------------------
+\item
+\textbf{No human intervention:}
+While a robot is performing a single test no human intervention to test environment) is allowed
+(e.g., moving/removing tableware that is before and after operation etc.)
+%------------------
+\item
+\textbf{Fixed start/end status for a task:}
+There is a predefined start/end position/orientation of end-effector or joints,
+which robot must be placed in before excute a single test and must return to when it complete the test.
+\end{itemize}
+
+On the other hands, each task has its own task scenario, success/penalty conditions, and score system 
+while common penalties for dangerous behaviors are described in \ref{subsec:penalty}. 
+
+\subsection{Common Penalties}
+\label{subsec:penalty}
+
+For a robot working in daily life environment, safety is the utmost imortant.
+Therefore, there is a penalty for a robot of intentional/unintentionl dangerous behavior. 
+The number of such behavior is counted and weigthed to discount a final score of each single test.
+The list of common penalty condition is as follows:
+\begin{itemize}
+\item
+\textbf{Drop}:
+Unintentional droping of object during interaction will be counted as drop event.
+%---------------
+\item
+\textbf{Push}:
+All object's position should be changed by a robot's operation.
+Unintentional position change by e.g., colliding with in any part of a robot will be counted as pused event, 
+if its position change is more than 10cm or clearly visible and drastic for refree eyes.
+%---------------
+\item
+\textbf{Knock-down}:
+Same for the push event, orientation of all objects except utensil should be changed by a robot's operation.
+Unintentional orientation change more 45 degrees with respect to its upright pose will be counted as knock-down event. 
+%---------------
+\end{itemize}
+
+
+
+
+\input{task/clear_table}
